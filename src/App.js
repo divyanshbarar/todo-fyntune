@@ -1,56 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useState } from 'react';
 import './App.css';
+import InputList from './Components/Input';
+import Todo from './Components/Todo';
+
+import { useSelector } from 'react-redux'
+
+import { selectTodoList } from "./features/todoSlice"
+import { Button } from '@material-ui/core';
+
+
 
 function App() {
+
+  const todoList = useSelector(selectTodoList)
+  const [sort, setSort] = useState("all")
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+
+
+      <div className="app__container">
+        <InputList />
+        <div className="app__buttons">
+          <Button onClick={() => setSort("active")}>Active</Button>
+          <Button onClick={() => setSort("done")}>Done</Button>
+          <Button onClick={() => setSort("all")}>All</Button>
+        </div>
+        <div className="app__todoContainer">
+          {
+            todoList.length > 0 && sort === "active" ?
+              todoList.map(item => {
+                return (
+
+                  item.done === false && <Todo name={item.item} date={item.date} done={item.done}
+                    id={item.id} />
+                )
+              }
+              ) : null
+          }
+          {
+            todoList.length > 0 && sort === "done" ?
+              todoList.map(item => {
+                return (
+
+                  item.done === true && <Todo name={item.item}
+                    date={item.date}
+                    done={item.done}
+                    id={item.id} />
+                )
+              }
+              ) : null
+          }
+          {
+            todoList.length > 0 && sort === "all" ?
+              todoList.map(item =>
+
+              (<Todo name={item.item} date={item.date} done={item.done}
+                id={item.id} />
+              )
+              ) : null
+          }
+        </div>
+      </div>
+
     </div>
   );
 }

@@ -1,0 +1,46 @@
+.todo {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: fit-content;
+  width: 80%;
+  padding: 6px;
+  background-color: rgb(0, 132, 255);
+  height: fit-content;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.todoouter--done {
+  background-color: rgb(121, 121, 121);
+  color: black;
+}
+.todo--done {
+  background-color: gray;
+  /* background-color: rgb(158, 142, 142); */
+  text-decoration: line-through;
+}
+.todo__text > p {
+  /* background-color: rgb(8, 80, 23); */
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+.todo__text > textarea {
+  flex: 1;
+  border: none;
+  color: white;
+  height: 40px;
+  font-size: 18px;
+  border-radius: 12px;
+  padding-left: 15px;
+  background-color: rgb(31, 49, 65);
+}
+
+/* @media (max-width: 768px) {
+  .todo {
+    width: 100%;
+  }
+} */

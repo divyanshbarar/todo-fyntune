@@ -1,0 +1,35 @@
+.input {
+  min-width: fit-content;
+  width: 80%;
+  background-color: #fff;
+  height: fit-content;
+  padding-bottom: 20px;
+  margin: 16px auto;
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: flex-start;
+  border-radius: 12px;
+}
+.input > input {
+  margin-left: 16px;
+  flex: 1;
+  border: none;
+}
+.input > input:focus {
+  outline: none;
+}
+.input > button {
+  background-color: primary;
+  padding: 15px 30px;
+  color: #fff;
+  border: none;
+  margin-right: 10px;
+  border-radius: 12px;
+  background-color: rgb(1, 100, 1);
+}
+.input > button:hover {
+  cursor: pointer;
+  background-color: rgb(33, 156, 33);
+}
